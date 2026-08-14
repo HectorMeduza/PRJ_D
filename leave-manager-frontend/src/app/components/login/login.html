@@ -1,0 +1,26 @@
+<div class="container mt-5" style="max-width: 400px;">
+  <h3 class="text-center mb-4">Autentificare Leave Manager</h3>
+
+  @if (errorMessage) {
+    <div class="alert alert-danger" role="alert">
+      {{ errorMessage }}
+    </div>
+  }
+
+  <form (ngSubmit)="onLogin()">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email Angajat:</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        [(ngModel)]="email"
+        name="email"
+        placeholder="nume@exemplu.com"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Autentificare</button>
+  </form>
+</div>

@@ -1,0 +1,51 @@
+.list-container {
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+  .filters {
+    margin-bottom: 20px;
+    select {
+      padding: 5px 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f8f9fa;
+      color: #2c3e50;
+    }
+
+    .badge {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      &.pending { background: #f39c12; color: white; }
+      &.approved { background: #2ecc71; color: white; }
+      &.rejected { background: #e74c3c; color: white; }
+      &.cancelled { background: #95a5a6; color: white; }
+      &.draft { background: #34495e; color: white; }
+    }
+
+    .btn {
+      padding: 5px 10px;
+      margin-right: 5px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      &.btn-danger { background: #e74c3c; color: white; &:hover { background: #c0392b; } }
+      &.btn-secondary { background: #95a5a6; color: white; &:hover { background: #7f8c8d; } }
+    }
+  }
+}

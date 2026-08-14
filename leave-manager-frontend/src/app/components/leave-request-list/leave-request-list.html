@@ -1,0 +1,51 @@
+<div class="list-container card">
+  <h2>Lista Cererilor de Concediu</h2>
+
+  <div class="filters">
+    <label>Filtrează după status: </label>
+    <select [(ngModel)]="selectedStatus" (change)="filterByStatus()">
+      <option value="">Toate</option>
+      <option value="DRAFT">DRAFT</option>
+      <option value="PENDING">PENDING</option>
+      <option value="APPROVED">APPROVED</option>
+      <option value="REJECTED">REJECTED</option>
+      <option value="CANCELLED">CANCELLED</option>
+    </select>
+  </div>
+
+  @if (loading) {
+    <p>Se încarcă cererile...</p>
+  } @else {
+    <table class="data-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tip</th>
+        <th>Perioada</th>
+        <th>Zile</th>
+        <th>Status</th>
+        <th>Acțiuni</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (req of filteredRequests; track req.leave_request_id) {
+          <tr>
+            <td>#{{ req.leave_request_id }}</td>
+            <td>{{ req.leaveTypeName || req.leave_type_id }}</td>
+            <td>{{ req.start_date }} / {{ req.end_date }}</td>
+            <td>{{ req.working_days }}</td>
+            <td>
+              <span class="badge {{ req.status.toLowerCase() }}">{{ req.status }}</span>
+            </td>
+            <td>
+              @if (req.status === 'PENDING' || req.status === 'DRAFT') {
+                <button class="btn btn-danger" (click)="cancelRequest(req.leave_request_id)">Anulează</button>
+              }
+              <button class="btn btn-secondary" (click)="downloadPdf(req.leave_request_id)">PDF</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>

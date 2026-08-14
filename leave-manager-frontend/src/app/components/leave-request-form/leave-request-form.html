@@ -1,0 +1,34 @@
+<div class="form-container card">
+  <h2>Creare Cerere Concediu</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Tip Concediu:</label>
+      <select [(ngModel)]="selectedTypeId" name="leave_type_id" (change)="onTypeChange()" required>
+        <option value="0">Selectează tipul</option>
+        @for (type of leaveTypes; track type.leave_type_id) {
+          <option [value]="type.leave_type_id">{{ type.name }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Data Început:</label>
+      <input type="date" [(ngModel)]="startDate" name="start_date" required />
+    </div>
+
+    <div class="form-group">
+      <label>Data Sfârșit:</label>
+      <input type="date" [(ngModel)]="endDate" name="end_date" required />
+    </div>
+
+    @if (requiresAttachment) {
+      <div class="form-group alert">
+        <label>Document Justificativ (Obligatoriu):</label>
+        <input type="file" (change)="onFileSelected($event)" required />
+      </div>
+    }
+
+    <button type="submit" class="btn btn-primary">Trimite Cererea</button>
+  </form>
+</div>

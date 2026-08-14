@@ -1,0 +1,34 @@
+<div class="dashboard-container">
+  <h2>Panou de Control (Dashboard)</h2>
+
+  @if (loading) {
+    <div class="loading">Se încarcă statisticile...</div>
+  } @else {
+    <div class="stats-grid">
+      <div class="card stat-card">
+        <h3>Total Cereri</h3>
+        <p class="stat-value">{{ totalRequests }}</p>
+      </div>
+      <div class="card stat-card pending">
+        <h3>În Așteptare</h3>
+        <p class="stat-value">{{ pendingRequests }}</p>
+      </div>
+      <div class="card stat-card approved">
+        <h3>Aprobate</h3>
+        <p class="stat-value">{{ approvedRequests }}</p>
+      </div>
+      <div class="card stat-card rejected">
+        <h3>Respinse</h3>
+        <p class="stat-value">{{ rejectedRequests }}</p>
+      </div>
+    </div>
+
+    <div class="quick-actions card">
+      <h3>Acțiuni Rapide</h3>
+      <div class="action-buttons">
+        <a routerLink="/new-request" class="btn btn-primary">Creează Cerere Nouă</a>
+        <a routerLink="/requests" class="btn btn-secondary">Gestionează Cereri</a>
+      </div>
+    </div>
+  }
+</div>
